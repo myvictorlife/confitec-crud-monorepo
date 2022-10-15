@@ -12,11 +12,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '@environment';
 import { CoreModule } from './core/core.module';
 import { EffectsModule } from '@ngrx/effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     StoreModule.forRoot(reducers, { metaReducers }),
