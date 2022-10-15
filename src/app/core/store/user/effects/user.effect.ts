@@ -16,8 +16,8 @@ export class UserEffects {
             ofType(fromUserActions.ActionTypes.FETCH_ALL_USERS),
             switchMap(() => this.userService.fetchAll()
                 .pipe(
-                    map((users: User[]) => new fromUserActions.AddUserAction(users)),
-                    catchError((error) => of(new fromUserActions.FetchAllUsersFailedAction(error)))
+                    map((users: User[]) => fromUserActions.AddUsersAction({ users })),
+                    catchError((error) => of(fromUserActions.FetchAllUsersFailedAction(error)))
                 )
             )));
 
@@ -26,8 +26,8 @@ export class UserEffects {
             ofType(fromUserActions.ActionTypes.FETCH_USER_BY_ID),
             switchMap((userId) => this.userService.fetchById(userId)
                 .pipe(
-                    map((users: User[]) => new fromUserActions.AddUserAction(users)),
-                    catchError((error) => of(new fromUserActions.FetchAllUsersFailedAction(error)))
+                    map((user: User) => fromUserActions.AddUserAction({user})),
+                    catchError((error) => of(fromUserActions.FetchAllUsersFailedAction(error)))
                 )
             )));
 
@@ -37,8 +37,8 @@ export class UserEffects {
             ofType(fromUserActions.ActionTypes.UPDATE_USER),
             switchMap(({ payload }) => this.userService.update(payload)
                 .pipe(
-                    map((newUser) => new fromUserActions.UpdateUserSuccessfullyAction(newUser)),
-                    catchError((error) => of(new fromUserActions.UpdateUserFailedAction(error)))
+                    map((newUser) => fromUserActions.UpdateUserSuccessfullyAction({user: newUser})),
+                    catchError((error) => of(fromUserActions.UpdateUserFailedAction(error)))
                 )
             )));
 
@@ -47,8 +47,8 @@ export class UserEffects {
             ofType(fromUserActions.ActionTypes.DELETE_USER),
             switchMap((user) => this.userService.delete(user)
                 .pipe(
-                    map((oldUser: User) => new fromUserActions.DeleteUserSuccessfullyAction(oldUser)),
-                    catchError((error) => of(new fromUserActions.DeleteUserFailedAction(error)))
+                    map((oldUser: User) => fromUserActions.DeleteUserSuccessfullyAction({user: oldUser})),
+                    catchError((error) => of(fromUserActions.DeleteUserFailedAction(error)))
                 )
             )));
 

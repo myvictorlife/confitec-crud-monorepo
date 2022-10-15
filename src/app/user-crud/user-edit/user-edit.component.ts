@@ -4,6 +4,7 @@ import { Education } from '@confitec-core/models/education.model';
 import { User } from '@confitec-core/models/user.model';
 import { Store } from '@ngrx/store';
 import * as fromUserActions from '@confitec-store/user/actions/user.actions';
+import { selectCurrentUser } from '@confitec-core/store/user/selectors/user.selector';
 @Component({
   selector: 'confitec-user-edit',
   templateUrl: './user-edit.component.html',
@@ -11,7 +12,7 @@ import * as fromUserActions from '@confitec-store/user/actions/user.actions';
 })
 export class UserEditComponent implements OnInit {
 
-  @Input() user: User;
+  user$ = this.store.select(selectCurrentUser);
 
   userForm: FormGroup;
 
@@ -29,16 +30,13 @@ export class UserEditComponent implements OnInit {
     description: 'Superior'
   }];
 
-  constructor(private store: Store, public formBuilder: FormBuilder) { }
+  constructor(private store: Store, public formBuilder: FormBuilder) {
+  }
 
   ngOnInit() {
-    this.userForm = this.formBuilder.group({
-      firstName: [this.user.firstName, [Validators.required, Validators.minLength(2)]],
-      lastName: [this.user.lastName],
-      dob: [this.user.dob],
-      email: [this.user.email, [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      educationId: [this.user.educationaId]
-    });
+    // this.user$.subscribe((user) => {
+    //   if (user) this.initForm(user);
+    // });
   }
 
   getDate(e) {
@@ -48,13 +46,24 @@ export class UserEditComponent implements OnInit {
     });
   }
 
+  initForm(user) {
+    this.userForm = this.formBuilder.group({
+      firstName: [user.firstName, [Validators.required, Validators.minLength(2)]],
+      lastName: [user.lastName],
+      dob: [user.dob],
+      email: [user.email, [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      educationId: [user.educationaId]
+    });
+
+  }
+
   compareWith(o1, o2) {
     return o1 && o2 ? o1.id === o2.id : o1 === o2;
   };
 
   submitForm() {
     const user: User = this.userForm.value;
-    this.store.dispatch(new fromUserActions.UpdateUserAction(user));
+    this.store.dispatch(fromUserActions.UpdateUser({user}));
   }
 
 }

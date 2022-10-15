@@ -1,4 +1,4 @@
-<form [formGroup]="userForm" (ngSubmit)="submitForm()" novalidate>
+<form [formGroup]="userForm" *ngIf="!!userForm" (ngSubmit)="submitForm()" novalidate>
 
 
   <ion-item lines="full">
@@ -19,7 +19,7 @@
 
   <ion-item lines="full">
     <ion-label position="floating">DOB</ion-label>
-    <ion-datetime (ionChange)="getDate($event)" formControlName="dob" [value]="user.dob"></ion-datetime>
+    <ion-datetime (ionChange)="getDate($event)" formControlName="dob" [value]="(user$ | async)?.dob"></ion-datetime>
   </ion-item>
 
   <ion-item lines="full">
@@ -36,5 +36,3 @@
   </ion-row>
 
 </form>
-
-{{ this.userForm.value | json }}

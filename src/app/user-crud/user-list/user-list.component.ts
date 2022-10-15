@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class UserListComponent implements OnInit {
 
-  selectAllUsers$: Observable<User[]> = this.store.select(selectAllUsers);
+  selectAllUsers$ = this.store.select(selectAllUsers);
   constructor(private store: Store) { }
 
   ngOnInit() {}

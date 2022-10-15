@@ -6,10 +6,10 @@ import { environment } from '@environment';
 import * as fromUser from './user/reducers/user.reducer';
 
   export interface ConfitecState {
-    user: fromUser.UserState;
+    users: fromUser.UserState;
   }
   export const reducers: ActionReducerMap<ConfitecState> = {
-    user: fromUser.reducer
+    users: fromUser.reducer
   };
   export const metaReducers: MetaReducer<ConfitecState>[] = !environment.production
     ? []

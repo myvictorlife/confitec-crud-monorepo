@@ -9,6 +9,6 @@ import * as fromUserActions from '@confitec-store/user/actions/user.actions';
 })
 export class AppComponent {
   constructor(private store: Store) {
-    this.store.dispatch(new fromUserActions.FetchAllUsersAction());
+    this.store.dispatch(fromUserActions.FetchAllUsersAction());
   }
 }

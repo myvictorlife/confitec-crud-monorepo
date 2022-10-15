@@ -14,12 +14,12 @@ export class UserService {
         return this.httpClient.get<User[]>('https://run.mocky.io/v3/441925dd-29fb-4a58-8f5c-bc3d907856ac');
     }
 
-    fetchById(id: number): Observable<User[]> {
-        return this.httpClient.get<User[]>('https://run.mocky.io/v3/50e3b08f-9c6f-4be3-9de3-4938c42a9354');
+    fetchById(id: number): Observable<User> {
+        return this.httpClient.get<User>('https://run.mocky.io/v3/50e3b08f-9c6f-4be3-9de3-4938c42a9354');
     }
 
     update(user: User): Observable<User> {
-        return this.httpClient.put<User>('https://run.mocky.io/v3/720ca277-a159-4a22-9b51-d100fe91bf0e', user);
+        return this.httpClient.put<User>('https://run.mocky.io/v3/6e912d03-7882-446a-a0c1-6117d8faca1d', user);
     }
 
     delete(user: User): Observable<User> {

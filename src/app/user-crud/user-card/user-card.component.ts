@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { User } from '@confitec-core/models/user.model';
-
+import * as fromUser from '@confitec-store/user/actions/user.actions';
+import { Store } from '@ngrx/store';
 @Component({
   selector: 'confitec-user-card',
   templateUrl: './user-card.component.html',
@@ -13,13 +14,17 @@ export class UserCardComponent implements OnInit {
 
   isEdit = false;
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit() {}
 
-
   setIsEdit() {
     this.isEdit = !this.isEdit;
+    if (this.isEdit) {
+      this.store.dispatch(fromUser.setSelectedUserId({ selectedUserId: this.user.id}));
+    } else {
+
+    }
   }
 
 }
