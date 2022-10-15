@@ -35,7 +35,7 @@ export class UserEffects {
     update$ = createEffect(() => this.actions$
         .pipe(
             ofType(fromUserActions.ActionTypes.UPDATE_USER),
-            switchMap((user) => this.userService.update(user)
+            switchMap(({ payload }) => this.userService.update(payload)
                 .pipe(
                     map((newUser) => new fromUserActions.UpdateUserSuccessfullyAction(newUser)),
                     catchError((error) => of(new fromUserActions.UpdateUserFailedAction(error)))

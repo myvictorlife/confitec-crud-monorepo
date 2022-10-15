@@ -3,12 +3,12 @@ import { User } from '@confitec-models/user.model';
 import * as fromUser from '../actions/user.actions';
 
 export interface UserState {
-    data: User[];
+    list: User[];
     error: any;
 }
 
 export const initialState: UserState = {
-    data: [],
+    list: [],
     error: undefined
 };
 
@@ -21,7 +21,7 @@ export const reducer = (
         case fromUser.ActionTypes.ADD_USER: {
             return {
                 ...state,
-                data: action.payload
+                list: action.payload
             };
         }
         case fromUser.ActionTypes.UPDATE_USER: {
@@ -61,3 +61,6 @@ export const reducer = (
         }
     }
 };
+
+export const getAllUsers = (state: UserState) =>
+  state?.list ?? [];

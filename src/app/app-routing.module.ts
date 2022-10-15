@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'user-crud',
+    loadChildren: () => import('./user-crud/user-crud.module').then( m => m.UserCrudPageModule)
+  },
 ];
 
 @NgModule({
