@@ -1,81 +1,82 @@
-import { Action } from "@ngrx/store";
-import { User } from "src/app/core/models/user.model";
+import { Action } from '@ngrx/store';
+import { User } from '@confitec-core/models/user.model';
 
 export enum ActionTypes {
-    AddUser = "[User Service] Create User",
-    UpdateUser = "[User Service] Update User",
-    UpdateUserSuccessfully = "[User Service] Update User Successfully",
-    UpdateUserFailed = "[User Service] Update User Failed",
-    FetchAllUsers = "[User Service] Fetch All Users",
-    FetchAllUsersFailed = "[User Service] Fetch All Users Failed",
-    FetchUserById = "[User Service] Fetch User By Id",
-    DeleteUser = "[User Service] Delete User",
-    DeleteUserSuccessfyly = "[User Service] Delete User Successfully",
-    DeleteUserFailed = "[User Service] Delete User Failed",
+    /*eslint camelcase: ["error", {ignoreImports: true}]*/
+    ADD_USER = '[User Service] Create User',
+    UPDATE_USER = '[User Service] Update User',
+    UPDATE_USER_SUCCESSFULLY = '[User Service] Update User Successfully',
+    UPDATE_USER_FAILED = '[User Service] Update User Failed',
+    FETCH_ALL_USERS = '[User Service] Fetch All Users',
+    FETCH_ALL_USERS_FAILED = '[User Service] Fetch All Users Failed',
+    FETCH_USER_BY_ID = '[User Service] Fetch User By Id',
+    DELETE_USER = '[User Service] Delete User',
+    DELETE_USER_SUCCESSFULLY = '[User Service] Delete User Successfully',
+    DELETE_USER_FAILED = '[User Service] Delete User Failed',
 }
 
-export class AddUser implements Action {
-    readonly type = ActionTypes.AddUser;
+export class AddUserAction implements Action {
+    readonly type = ActionTypes.ADD_USER;
 
     constructor(public payload: User[]) {}
 }
 
-export class UpdateUser implements Action {
-    readonly type = ActionTypes.UpdateUser;
+export class UpdateUserAction implements Action {
+    readonly type = ActionTypes.UPDATE_USER;
 
     constructor(public payload: User) {}
 }
 
-export class UpdateUserSuccessfully implements Action {
-    readonly type = ActionTypes.UpdateUserSuccessfully;
+export class UpdateUserSuccessfullyAction implements Action {
+    readonly type = ActionTypes.UPDATE_USER_SUCCESSFULLY;
 
     constructor(public payload: User) {}
 }
 
-export class UpdateUserFailed implements Action {
-    readonly type = ActionTypes.UpdateUserFailed;
+export class UpdateUserFailedAction implements Action {
+    readonly type = ActionTypes.UPDATE_USER_FAILED;
 
     constructor(public payload: any) {}
 }
 
-export class FetchAllUsers implements Action {
-    readonly type = ActionTypes.FetchAllUsers;
+export class FetchAllUsersAction implements Action {
+    readonly type = ActionTypes.FETCH_ALL_USERS;
 
     constructor() {}
 }
 
-export class FetchAllUsersFailed implements Action {
-    readonly type = ActionTypes.FetchAllUsersFailed;
+export class FetchAllUsersFailedAction implements Action {
+    readonly type = ActionTypes.FETCH_ALL_USERS_FAILED;
 
     constructor(public payload: any) {}
 }
 
-export class FetchUserById implements Action {
-    readonly type = ActionTypes.FetchUserById;
+export class FetchUserByIdAction implements Action {
+    readonly type = ActionTypes.FETCH_USER_BY_ID;
 
     constructor(public payload: number) {}
 }
 
-export class DeleteUser implements Action {
-    readonly type = ActionTypes.DeleteUser;
+export class DeleteUserAction implements Action {
+    readonly type = ActionTypes.DELETE_USER;
 
     constructor(public payload: User) {}
 }
 
-export class DeleteUserSuccessfyly implements Action {
-    readonly type = ActionTypes.DeleteUserSuccessfyly;
+export class DeleteUserSuccessfullyAction implements Action {
+    readonly type = ActionTypes.DELETE_USER_SUCCESSFULLY;
 
     constructor(public payload: User) {}
 }
 
-export class DeleteUserFailed implements Action {
-    readonly type = ActionTypes.DeleteUserFailed;
+export class DeleteUserFailedAction implements Action {
+    readonly type = ActionTypes.DELETE_USER_FAILED;
 
     constructor(public payload: any) {}
 }
 
-export type ActionUnion = 
-    AddUser |
-    UpdateUser | UpdateUserSuccessfully | UpdateUserFailed |
-    FetchUserById | FetchAllUsersFailed |
-    DeleteUser | DeleteUserSuccessfyly | DeleteUserFailed;
+export type ActionUnion =
+    AddUserAction |
+    UpdateUserAction | UpdateUserSuccessfullyAction | UpdateUserFailedAction |
+    FetchUserByIdAction | FetchAllUsersFailedAction |
+    DeleteUserAction | DeleteUserSuccessfullyAction | DeleteUserFailedAction;

@@ -2,11 +2,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-
 import * as fromUserActions from '../actions/user.actions';
-import { UserService } from 'src/app/core/services/user/user.service';
+import { UserService } from '@confitec-services/user/user.service';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { User } from 'src/app/core/models/user.model';
+import { User } from '@confitec-core/models/user.model';
 import { of } from 'rxjs';
 
 @Injectable()
@@ -14,42 +13,42 @@ export class UserEffects {
 
     fetch$ = createEffect(() => this.actions$
         .pipe(
-            ofType(fromUserActions.ActionTypes.FetchAllUsers),
+            ofType(fromUserActions.ActionTypes.FETCH_ALL_USERS),
             switchMap(() => this.userService.fetchAll()
                 .pipe(
-                    map((users: User[]) => new fromUserActions.AddUser(users)),
-                    catchError((error) => of(new fromUserActions.FetchAllUsersFailed(error)))
+                    map((users: User[]) => new fromUserActions.AddUserAction(users)),
+                    catchError((error) => of(new fromUserActions.FetchAllUsersFailedAction(error)))
                 )
             )));
 
     fetchById$ = createEffect(() => this.actions$
         .pipe(
-            ofType(fromUserActions.ActionTypes.FetchUserById),
+            ofType(fromUserActions.ActionTypes.FETCH_USER_BY_ID),
             switchMap((userId) => this.userService.fetchById(userId)
                 .pipe(
-                    map((users: User[]) => new fromUserActions.AddUser(users)),
-                    catchError((error) => of(new fromUserActions.FetchAllUsersFailed(error)))
+                    map((users: User[]) => new fromUserActions.AddUserAction(users)),
+                    catchError((error) => of(new fromUserActions.FetchAllUsersFailedAction(error)))
                 )
             )));
 
 
     update$ = createEffect(() => this.actions$
         .pipe(
-            ofType(fromUserActions.ActionTypes.UpdateUser),
+            ofType(fromUserActions.ActionTypes.UPDATE_USER),
             switchMap((user) => this.userService.update(user)
                 .pipe(
-                    map((user: User) => new fromUserActions.UpdateUserSuccessfully(user)),
-                    catchError((error) => of(new fromUserActions.UpdateUserFailed(error)))
+                    map((newUser) => new fromUserActions.UpdateUserSuccessfullyAction(newUser)),
+                    catchError((error) => of(new fromUserActions.UpdateUserFailedAction(error)))
                 )
             )));
 
     delete$ = createEffect(() => this.actions$
         .pipe(
-            ofType(fromUserActions.ActionTypes.DeleteUser),
+            ofType(fromUserActions.ActionTypes.DELETE_USER),
             switchMap((user) => this.userService.delete(user)
                 .pipe(
-                    map((user: User) => new fromUserActions.DeleteUserSuccessfyly(user)),
-                    catchError((error) => of(new fromUserActions.DeleteUserFailed(error)))
+                    map((oldUser: User) => new fromUserActions.DeleteUserSuccessfullyAction(oldUser)),
+                    catchError((error) => of(new fromUserActions.DeleteUserFailedAction(error)))
                 )
             )));
 

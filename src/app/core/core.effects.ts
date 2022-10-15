@@ -1,3 +1,3 @@
-import { UserEffects } from "./store/user/effects/user.effect";
+import { UserEffects } from './store/user/effects/user.effect';
 
 export const coreEffectsAtBootstrap = [ UserEffects ];

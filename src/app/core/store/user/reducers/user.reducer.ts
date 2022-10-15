@@ -1,6 +1,6 @@
 
-import { User } from "src/app/core/models/user.model";
-import * as fromUser from "../actions/user.actions";
+import { User } from '@confitec-models/user.model';
+import * as fromUser from '../actions/user.actions';
 
 export interface UserState {
     data: User[];
@@ -10,54 +10,54 @@ export interface UserState {
 export const initialState: UserState = {
     data: [],
     error: undefined
-}
+};
 
-export function reducer(
+export const reducer = (
     state = initialState,
     action: fromUser.ActionUnion
-): UserState {
+): UserState => {
 
     switch (action.type) {
-        case fromUser.ActionTypes.AddUser: {
+        case fromUser.ActionTypes.ADD_USER: {
             return {
                 ...state,
                 data: action.payload
-            }
+            };
         }
-        case fromUser.ActionTypes.UpdateUser: {
+        case fromUser.ActionTypes.UPDATE_USER: {
             return {
                 ...state
-            }
+            };
         }
-        case fromUser.ActionTypes.FetchAllUsersFailed: {
+        case fromUser.ActionTypes.FETCH_ALL_USERS_FAILED: {
             return {
                 ...state,
                 error: action.payload
-            }
+            };
         }
-        case fromUser.ActionTypes.UpdateUserSuccessfully: {
+        case fromUser.ActionTypes.UPDATE_USER_SUCCESSFULLY: {
             return {
                 ...state,
-            }
+            };
         }
-        case fromUser.ActionTypes.UpdateUserFailed: {
+        case fromUser.ActionTypes.UPDATE_USER_FAILED: {
             return {
                 ...state,
                 error: action.payload
-            }
+            };
         }
-        case fromUser.ActionTypes.DeleteUserSuccessfyly: {
+        case fromUser.ActionTypes.DELETE_USER_SUCCESSFULLY: {
             return {
                 ...state
-            }
+            };
         }
-        case fromUser.ActionTypes.DeleteUserFailed: {
+        case fromUser.ActionTypes.DELETE_USER_FAILED: {
             return {
                 ...state
-            }
+            };
         }
         default: {
             return state;
         }
     }
-}
+};

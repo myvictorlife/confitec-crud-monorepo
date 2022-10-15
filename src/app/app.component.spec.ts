@@ -1,23 +1,27 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { TestBed, waitForAsync } from '@angular/core/testing';
-
+import { IonicModule } from '@ionic/angular';
+import { Spectator, createComponentFactory } from '@ngneat/spectator';
+import { provideMockStore } from '@ngrx/store/testing';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
 
-  beforeEach(waitForAsync(() => {
+  let spectator: Spectator<AppComponent>;
+  const createComponent = createComponentFactory({
+    component: AppComponent,
+    imports: [
+      IonicModule.forRoot(),
+      AppRoutingModule
+    ],
+    providers: [
+      provideMockStore({})
+    ]
+  });
 
-    TestBed.configureTestingModule({
-      declarations: [AppComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    }).compileComponents();
-  }));
+  beforeEach(() => spectator = createComponent());
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    expect(spectator.component).toBeTruthy();
   });
-  // TODO: add more tests!
 
 });
