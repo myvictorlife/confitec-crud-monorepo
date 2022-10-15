@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './core/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from 'src/environments/environment';
+import { environment } from '@environment';
 import { CoreModule } from './core/core.module';
 import { EffectsModule } from '@ngrx/effects';
 

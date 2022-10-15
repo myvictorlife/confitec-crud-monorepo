@@ -2,11 +2,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-
 import * as fromUserActions from '../actions/user.actions';
-import { UserService } from 'src/app/core/services/user/user.service';
+import { UserService } from "@confitec-services/user/user.service";
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { User } from 'src/app/core/models/user.model';
+import { User } from "@confitec-core/models/user.model";
 import { of } from 'rxjs';
 
 @Injectable()

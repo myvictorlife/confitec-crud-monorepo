@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import { User } from "src/app/core/models/user.model";
+import { User } from "@confitec-core/models/user.model";
 
 export enum ActionTypes {
     AddUser = "[User Service] Create User",

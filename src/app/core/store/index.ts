@@ -5,7 +5,7 @@ import {
     createSelector,
     MetaReducer,
   } from '@ngrx/store';
-import { environment } from 'src/environments/environment';
+import { environment } from '@environment';
 import * as fromUser from './user/reducers/user.reducer';
   
   export interface ConfitecState {

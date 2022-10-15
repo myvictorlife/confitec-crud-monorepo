@@ -1,5 +1,5 @@
 
-import { User } from "src/app/core/models/user.model";
+import { User } from "@confitec-models/user.model";
 import * as fromUser from "../actions/user.actions";
 
 export interface UserState {
