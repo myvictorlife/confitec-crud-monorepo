@@ -8,6 +8,16 @@ on:
     # The branches below must be a subset of the branches above
     branches: [master]
 
+name: Install, Build, Lint and Test
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [main]
+
 jobs:
   build:
     name: Build
