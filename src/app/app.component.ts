@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as fromUserActions from './core/store/user/actions/user.actions';
+import * as fromUserActions from '@confitec-store/user/actions/user.actions';
 
 @Component({
   selector: 'confitec-root',
@@ -9,6 +9,6 @@ import * as fromUserActions from './core/store/user/actions/user.actions';
 })
 export class AppComponent {
   constructor(private store: Store) {
-    this.store.dispatch(new fromUserActions.FetchAllUsers());
+    this.store.dispatch(new fromUserActions.FetchAllUsersAction());
   }
 }
