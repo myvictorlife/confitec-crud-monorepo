@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import * as fromUserActions from './core/store/user/actions/user.actions';
 
 @Component({
-  selector: 'app-root',
+  selector: 'confitec-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
