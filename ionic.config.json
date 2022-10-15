@@ -1,0 +1,7 @@
+{
+  "name": "confitec",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
