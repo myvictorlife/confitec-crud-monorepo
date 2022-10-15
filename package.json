@@ -10,6 +10,7 @@
     "test": "jest",
     "watch": "jest --watch",
     "test:coverage:silent": "npx jest --silent --ci --coverage --coverageReporters='text' --coverageReporters='text-summary'",
+    "test:coverage": "jest --coverage",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
