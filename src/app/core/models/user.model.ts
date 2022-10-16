@@ -4,6 +4,6 @@ export interface User {
     lastName: string;
     email: string;
     dob: string;
-    educationaId: string;
+    educationaId: number;
     educationalHistory: string;
 }

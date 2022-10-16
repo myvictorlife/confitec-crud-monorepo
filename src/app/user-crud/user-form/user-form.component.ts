@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { selectAllEducations } from '@confitec-core/store/education/selectors/education.selector';
 import { Store } from '@ngrx/store';
@@ -35,7 +35,7 @@ export class UserFormComponent implements OnInit {
       lastName: [user.lastName],
       dob: [dob],
       email: [user.email, [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      educationId: [user.educationaId]
+      educationId: [user.educationaId, [Validators.required]]
     });
   }
 
@@ -48,11 +48,15 @@ export class UserFormComponent implements OnInit {
   }
 
   compareWith(o1, o2) {
-    return o1 && o2 ? o1.id === o2.id : o1 === o2;
+    return o1 === o2;
   };
 
   submitForm() {
-    this.userFormChange.emit({ id: this.user?.id, ...this.userForm.value});
+    if (!this.userForm.invalid) {
+      this.userFormChange.emit({ id: this.user?.id, ...this.userForm.value});
+    } else {
+      this.userForm.markAllAsTouched();
+    }
   }
 
 }

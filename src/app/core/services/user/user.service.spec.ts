@@ -1,5 +1,7 @@
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { User } from '@confitec-core/models/user.model';
+import { environment } from '@environment';
 import {
     createServiceFactory,
     SpectatorService,
@@ -11,6 +13,15 @@ import { UserService } from './user.service';
 describe('UserService', () => {
     let spectator: SpectatorService<UserService>;
     let httpClient: SpyObject<HttpClient>;
+    const user = {
+        id: 1,
+        firstName: 'Victor',
+        lastName: 'Barbosa',
+        email: 'victor@gmail.com',
+        educationaId: 1,
+        educationalHistory: '1',
+        dob: '1991-01-01',
+    } as User;
     const createService = createServiceFactory({
         service: UserService,
         imports: [HttpClientModule],
@@ -25,14 +36,14 @@ describe('UserService', () => {
         expect(spectator).toBeTruthy();
     });
 
-    it('should fetch all users', () => {
+    it('should fetch all users', (done) => {
         const spyGet = jest.spyOn(httpClient, 'get').mockImplementation(() => of([
             {
                 id: 1,
                 firstName: 'Victor',
                 lastName: 'Barbosa',
                 email: 'victor@gmail.com',
-                bithDate: '1991-09-01',
+                dob: '1991-09-01',
                 educationaId: 1,
                 educationalHistory: 1
             },
@@ -41,16 +52,45 @@ describe('UserService', () => {
                 firstName: 'Carlos',
                 lastName: 'Silva',
                 email: 'carlos@gmail.com',
-                bithDate: '1993-01-03',
+                dob: '1993-01-03',
                 educationaId: 2,
                 educationalHistory: 2
             }
         ]));
         spectator.service.fetchAll().subscribe((users) => {
             expect(spyGet).toHaveBeenCalledWith(
-                'https://run.mocky.io/v3/441925dd-29fb-4a58-8f5c-bc3d907856ac'
+                environment.baseURL + '/user'
             );
-            expect(users.length).toEqual(1);
+            expect(users.length).toEqual(2);
+            done();
+        });
+    });
+
+    it('should add user', (done) => {
+        const spyGet = jest.spyOn(httpClient, 'post').mockImplementation(() => of(user));
+        spectator.service.addUser(user).subscribe((newUser) => {
+            expect(spyGet).toHaveBeenCalledWith(
+                environment.baseURL + '/user', newUser
+            );
+            expect(newUser.firstName).toEqual('Victor');
+            done();
+        });
+    });
+
+    it('should user update', (done) => {
+        const spyGet = jest.spyOn(httpClient, 'put').mockImplementation(() => of(user));
+        spectator.service.update(user).subscribe((newUser) => {
+            expect(spyGet).toHaveBeenCalledWith(environment.baseURL + '/user', newUser);
+            expect(newUser.firstName).toEqual('Victor');
+            done();
+        });
+    });
+
+    it('should user delete', (done) => {
+        const spyGet = jest.spyOn(httpClient, 'delete').mockImplementation(() => of(user));
+        spectator.service.delete(user).subscribe((newUser) => {
+            expect(spyGet).toHaveBeenCalledWith(environment.baseURL + '/user/' + newUser.id);
+            done();
         });
     });
 

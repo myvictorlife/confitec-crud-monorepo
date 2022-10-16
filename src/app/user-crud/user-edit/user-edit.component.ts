@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '@confitec-core/models/user.model';
 import { Store } from '@ngrx/store';
@@ -43,6 +43,8 @@ export class UserEditComponent implements OnInit, OnDestroy {
     this.store.dispatch(fromUserActions.UpdateUser({user}));
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  @HostListener('unloaded')
   ngOnDestroy() {
     this.store.dispatch(fromUserActions.setSelectedUserId({ selectedUserId: null }));
   }
