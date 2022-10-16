@@ -35,8 +35,8 @@ module.exports = {
       '^@confitec-store/(.*)$': '<rootDir>/src/app/core/store/$1',
       '^@confitec-services/(.*)$': '<rootDir>/src/app/core/services/$1',
       '^@confitec-models/(.*)$': '<rootDir>/src/app/core/models/$1',
-      '^@environment': 'environments/environment',
-      '^@environment/*': 'environments/$1'
+      '^@environment/(.*)$': '<rootDir>/src/environments/$1',
+      '^@environment$': '<rootDir>/src/environments/environment'
     },
     transformIgnorePatterns: [ '/node_modules/(?!module1|module2/).+\\.js$' ]
   };

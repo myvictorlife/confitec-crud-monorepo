@@ -1,24 +1,23 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-
+import { createComponentFactory, Spectator } from '@ngneat/spectator';
+import { RouterTestingModule } from '@angular/router/testing';
 import { HomePage } from './home.page';
 
 describe('HomePage', () => {
-  let component: HomePage;
-  let fixture: ComponentFixture<HomePage>;
+  let spectator: Spectator<HomePage>;
+  const createComponent = createComponentFactory({
+    component: HomePage,
+    imports: [
+      IonicModule.forRoot(),
+      RouterModule,
+      RouterTestingModule
+    ]
+  });
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [ HomePage ],
-      imports: [IonicModule.forRoot()]
-    }).compileComponents();
-
-    fixture = TestBed.createComponent(HomePage);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  }));
+  beforeEach(() => spectator = createComponent());
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(spectator.component).toBeTruthy();
   });
 });

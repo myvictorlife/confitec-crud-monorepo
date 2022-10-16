@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>New</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="redirectToUserListPage()">
+        Voltar
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <confitec-user-form [user]="newUser" (userFormChange)="submitForm($event)"></confitec-user-form>
+</ion-content>
+
+

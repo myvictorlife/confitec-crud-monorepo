@@ -1,9 +1,12 @@
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { User } from '@confitec-core/models/user.model';
 
 export enum ActionTypes {
-    /*eslint camelcase: ["error", {ignoreImports: true}]*/
+    INSERT_USER = '[User Service] Insert User',
+    INSERT_USER_SUCCESSFULLY = '[User Service] Insert User Successfully',
+    INSERT_USER_FAILED = '[User Service] Insert User Failed',
     ADD_USER = '[User Service] Create User',
+    ADD_USERS = '[User Service] Create Users',
     UPDATE_USER = '[User Service] Update User',
     UPDATE_USER_SUCCESSFULLY = '[User Service] Update User Successfully',
     UPDATE_USER_FAILED = '[User Service] Update User Failed',
@@ -13,70 +16,87 @@ export enum ActionTypes {
     DELETE_USER = '[User Service] Delete User',
     DELETE_USER_SUCCESSFULLY = '[User Service] Delete User Successfully',
     DELETE_USER_FAILED = '[User Service] Delete User Failed',
+    CLEAR_USERS = '[User] Clear Users',
+    USER_SELECTED = '[User] Set Selected User Id'
 }
 
-export class AddUserAction implements Action {
-    readonly type = ActionTypes.ADD_USER;
+export const InsertUsersAction = createAction(
+    ActionTypes.INSERT_USER,
+    props<{ user: User }>()
+);
 
-    constructor(public payload: User[]) {}
-}
+export const InsertUsersSuccessfullyAction = createAction(
+    ActionTypes.INSERT_USER_SUCCESSFULLY,
+    props<{ user: User }>()
+);
 
-export class UpdateUserAction implements Action {
-    readonly type = ActionTypes.UPDATE_USER;
+export const InsertUsersFailedAction = createAction(
+    ActionTypes.INSERT_USER_FAILED,
+    props<{ error: any }>()
+);
 
-    constructor(public payload: User) {}
-}
 
-export class UpdateUserSuccessfullyAction implements Action {
-    readonly type = ActionTypes.UPDATE_USER_SUCCESSFULLY;
+export const AddUsersAction = createAction(
+    ActionTypes.ADD_USERS,
+    props<{ users: User[] }>()
+);
 
-    constructor(public payload: User) {}
-}
 
-export class UpdateUserFailedAction implements Action {
-    readonly type = ActionTypes.UPDATE_USER_FAILED;
+export const AddUserAction = createAction(
+    ActionTypes.ADD_USER,
+    props<{ user: User }>()
+);
 
-    constructor(public payload: any) {}
-}
+export const UpdateUser = createAction(
+    ActionTypes.UPDATE_USER,
+    props<{ user: User }>()
+);
 
-export class FetchAllUsersAction implements Action {
-    readonly type = ActionTypes.FETCH_ALL_USERS;
+export const UpdateUserSuccessfullyAction = createAction(
+    ActionTypes.UPDATE_USER_SUCCESSFULLY,
+    props<{ user: User }>()
+);
 
-    constructor() {}
-}
+export const UpdateUserFailedAction = createAction(
+    ActionTypes.UPDATE_USER_FAILED,
+    props<{ error: any}>()
+);
 
-export class FetchAllUsersFailedAction implements Action {
-    readonly type = ActionTypes.FETCH_ALL_USERS_FAILED;
+export const FetchAllUsersAction = createAction(
+    ActionTypes.FETCH_ALL_USERS,
+);
 
-    constructor(public payload: any) {}
-}
+export const FetchAllUsersFailedAction = createAction(
+    ActionTypes.FETCH_ALL_USERS_FAILED,
+    props<{ error: any}>()
+);
 
-export class FetchUserByIdAction implements Action {
-    readonly type = ActionTypes.FETCH_USER_BY_ID;
+export const FetchUserByIdAction = createAction(
+    ActionTypes.FETCH_USER_BY_ID,
+    props<{ id: number }>()
+);
 
-    constructor(public payload: number) {}
-}
+export const DeleteUserAction = createAction(
+    ActionTypes.DELETE_USER,
+    props<{ user: User }>()
+);
 
-export class DeleteUserAction implements Action {
-    readonly type = ActionTypes.DELETE_USER;
+export const DeleteUserSuccessfullyAction = createAction(
+    ActionTypes.DELETE_USER_SUCCESSFULLY,
+    props<{ user: User }>()
+);
 
-    constructor(public payload: User) {}
-}
+export const DeleteUserFailedAction = createAction(
+    ActionTypes.DELETE_USER_FAILED,
+    props<{ payload: any }>()
+);
 
-export class DeleteUserSuccessfullyAction implements Action {
-    readonly type = ActionTypes.DELETE_USER_SUCCESSFULLY;
+export const ClearUsersAction = createAction(
+    ActionTypes.CLEAR_USERS,
+);
 
-    constructor(public payload: User) {}
-}
+export const setSelectedUserId = createAction(
+    ActionTypes.USER_SELECTED,
+    props<{ selectedUserId: number }>()
+);
 
-export class DeleteUserFailedAction implements Action {
-    readonly type = ActionTypes.DELETE_USER_FAILED;
-
-    constructor(public payload: any) {}
-}
-
-export type ActionUnion =
-    AddUserAction |
-    UpdateUserAction | UpdateUserSuccessfullyAction | UpdateUserFailedAction |
-    FetchUserByIdAction | FetchAllUsersFailedAction |
-    DeleteUserAction | DeleteUserSuccessfullyAction | DeleteUserFailedAction;
