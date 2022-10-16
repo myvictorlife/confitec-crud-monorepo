@@ -12,6 +12,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserNewComponent } from './user-new/user-new.component';
+import { ComponentsModule } from 'app/components/components.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { UserNewComponent } from './user-new/user-new.component';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    UserCrudPageRoutingModule
+    UserCrudPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [
     UserCrudPage,

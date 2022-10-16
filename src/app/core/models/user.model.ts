@@ -1,3 +1,5 @@
+import { UploadFile } from './upload-file.model';
+
 export interface User {
     id: number;
     firstName: string;
@@ -5,5 +7,5 @@ export interface User {
     email: string;
     dob: string;
     educationaId: number;
-    educationalHistory: string;
+    historyEducation: UploadFile;
 }
