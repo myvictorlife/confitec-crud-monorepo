@@ -4,6 +4,7 @@ import { selectAllEducations } from '@confitec-core/store/education/selectors/ed
 import { Store } from '@ngrx/store';
 import * as fromEducationActions from '@confitec-store/education/actions/education.actions';
 import { User } from '@confitec-core/models/user.model';
+import { UploadFile } from '@confitec-core/models/upload-file.model';
 
 @Component({
   selector: 'confitec-user-form',
@@ -17,6 +18,7 @@ export class UserFormComponent implements OnInit {
 
   userForm: FormGroup;
   educationsList$ = this.store.select(selectAllEducations);
+  barStatus = false;
 
   maxDate: string;
 
@@ -35,7 +37,8 @@ export class UserFormComponent implements OnInit {
       lastName: [user.lastName],
       dob: [dob],
       email: [user.email, [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      educationId: [user.educationaId, [Validators.required]]
+      educationId: [user.educationaId, [Validators.required]],
+      historyEducation: [user.historyEducation, [Validators.required]]
     });
   }
 
@@ -50,6 +53,18 @@ export class UserFormComponent implements OnInit {
   compareWith(o1, o2) {
     return o1 === o2;
   };
+
+  setFileUrl(uploadFile: UploadFile) {
+    this.userForm.get('historyEducation').setValue(uploadFile);
+  }
+
+  changeBarStatus(barStatus: boolean) {
+    this.barStatus = barStatus;
+  }
+
+  downloadViewImage(url){
+    window.open(encodeURI(url),'_system","location=yes');
+  }
 
   submitForm() {
     if (!this.userForm.invalid) {

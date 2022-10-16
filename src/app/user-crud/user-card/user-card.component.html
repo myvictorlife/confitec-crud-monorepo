@@ -9,5 +9,14 @@
       Birth Date: {{ user.dob }}
       <ion-icon name="trash-outline" item-end slot="end" (click)="removeUser(user)"></ion-icon>
     </ion-item>
+    <div *ngIf="!!user?.historyEducation">
+      <div>Historico Escolar:</div><br />
+      <div (click)="downloadViewImage($event, user.historyEducation.url)">
+        <span>{{user.historyEducation.fileName}}</span>
+        <ion-thumbnail slot="start">
+          <ion-img [src]="user.historyEducation.url"></ion-img>
+        </ion-thumbnail>
+      </div>
+    </div>
   </ion-card-content>
 </ion-card>

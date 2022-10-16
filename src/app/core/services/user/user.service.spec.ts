@@ -1,5 +1,6 @@
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { UploadFile } from '@confitec-core/models/upload-file.model';
 import { User } from '@confitec-core/models/user.model';
 import { environment } from '@environment';
 import {
@@ -19,8 +20,8 @@ describe('UserService', () => {
         lastName: 'Barbosa',
         email: 'victor@gmail.com',
         educationaId: 1,
-        educationalHistory: '1',
-        dob: '1991-01-01',
+        historyEducation: { fileName: 'Confitec.pdf', url: 'https://location/confitec.pdf'} as UploadFile,
+        dob: '1991-01-01'
     } as User;
     const createService = createServiceFactory({
         service: UserService,

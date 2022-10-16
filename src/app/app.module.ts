@@ -14,6 +14,7 @@ import { CoreModule } from './core/core.module';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [

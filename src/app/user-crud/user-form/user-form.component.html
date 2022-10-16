@@ -18,16 +18,38 @@
 
   <ion-item lines="full">
     <ion-label position="floating">DOB</ion-label>
-    <br/>
-    <ion-datetime presentation="date" [value]="userForm.get('dob').value"  formControlName="dob" [max]="maxDate"></ion-datetime>
+    <br />
+    <ion-datetime presentation="date" [value]="userForm.get('dob').value" formControlName="dob" [max]="maxDate">
+    </ion-datetime>
   </ion-item>
-  
+
 
   <ion-item lines="full">
     <ion-label position="floating">Escolaridade</ion-label>
-    <ion-select interface="action-sheet" placeholder="Escolaridade" formControlName="educationId" [compareWith]="compareWith">
-      <ion-select-option *ngFor="let education of (educationsList$ | async)" [value]="education.id">{{ education.description }}</ion-select-option>
+    <ion-select interface="action-sheet" placeholder="Escolaridade" formControlName="educationId"
+      [compareWith]="compareWith">
+      <ion-select-option *ngFor="let education of (educationsList$ | async)" [value]="education.id">{{
+        education.description }}</ion-select-option>
     </ion-select>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-label position="floating">Histórico Escolar</ion-label>
+    <br />
+    <confitec-file-upload (urlChange)="setFileUrl($event)" (barStatusChange)="changeBarStatus($event)">
+    </confitec-file-upload>
+    <br/>
+    <span *ngIf="barStatus">Uploading...</span>
+  </ion-item>
+
+  <ion-item lines="full" *ngIf="userForm.get('historyEducation').value?.url">
+    <ion-thumbnail slot="start" (click)="downloadViewImage(userForm.get('historyEducation').value.url)">
+      <ion-img [src]="userForm.get('historyEducation').value.url"></ion-img>
+    </ion-thumbnail>
+    <span>
+      {{ user.educationalHistory.url }}
+      <ion-label>{{userForm.get('historyEducation').value.fileName}}</ion-label>
+    </span>
   </ion-item>
 
   <ion-row>

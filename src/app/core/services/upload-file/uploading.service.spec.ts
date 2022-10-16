@@ -1,5 +1,7 @@
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import {
     createServiceFactory,
     SpectatorService,
@@ -12,7 +14,11 @@ describe('UplodadingService', () => {
     let httpClient: SpyObject<HttpClient>;
     const createService = createServiceFactory({
         service: UploadingService,
-        imports: [HttpClientModule],
+        imports: [
+            HttpClientModule,
+            AngularFireModule.initializeApp({}),
+            AngularFireDatabaseModule
+        ]
     });
 
     beforeEach(() => {

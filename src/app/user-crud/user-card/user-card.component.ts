@@ -26,4 +26,9 @@ export class UserCardComponent implements OnInit {
     this.store.dispatch(fromUser.DeleteUserAction({ user }));
   }
 
+  downloadViewImage(event, url){
+    event.stopPropagation();
+    window.open(encodeURI(url),'_system','location=yes');
+  }
+
 }
