@@ -43,6 +43,7 @@ export class UserEditComponent implements OnInit, OnDestroy {
     this.store.dispatch(fromUserActions.UpdateUser({user}));
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   @HostListener('unloaded')
   ngOnDestroy() {
     this.store.dispatch(fromUserActions.setSelectedUserId({ selectedUserId: null }));

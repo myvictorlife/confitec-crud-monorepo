@@ -9,15 +9,14 @@ describe('UserReducer', () => {
     const action = fromUserActions.AddUserAction({ user });
     const state = fromUserReducer.reducer(initialState, action);
 
-    expect(state.entities).toEqual({"1": {"firstName": "Confitec", "id": 1}});
+    expect(state.entities).toEqual({1: {firstName: 'Confitec', id: 1}});
   });
 
   it('should add user using InsertUsersSuccessfullyAction  on the store', () => {
     const user = { id: 1, firstName: 'Confitec'} as User;
     const action = fromUserActions.InsertUsersSuccessfullyAction({ user });
     const state = fromUserReducer.reducer(initialState, action);
-
-    expect(state.entities).toEqual({"1": {"firstName": "Confitec", "id": 1}});
+    expect(state.entities).toEqual({1: {firstName: 'Confitec', id: 1}});
   });
 
   it('should add user using AddUsersAction  on the store', () => {

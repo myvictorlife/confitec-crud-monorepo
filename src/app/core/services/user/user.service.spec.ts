@@ -13,6 +13,15 @@ import { UserService } from './user.service';
 describe('UserService', () => {
     let spectator: SpectatorService<UserService>;
     let httpClient: SpyObject<HttpClient>;
+    const user = {
+        id: 1,
+        firstName: 'Victor',
+        lastName: 'Barbosa',
+        email: 'victor@gmail.com',
+        educationaId: 1,
+        educationalHistory: '1',
+        dob: '1991-01-01',
+    } as User;
     const createService = createServiceFactory({
         service: UserService,
         imports: [HttpClientModule],
@@ -58,56 +67,29 @@ describe('UserService', () => {
     });
 
     it('should add user', (done) => {
-        const user = {
-            id: 1,
-            firstName: 'Victor',
-            lastName: 'Barbosa',
-            email: 'victor@gmail.com',
-            educationaId: 1,
-            educationalHistory: '1',
-            dob: '1991-01-01',
-        } as User;
         const spyGet = jest.spyOn(httpClient, 'post').mockImplementation(() => of(user));
-        spectator.service.addUser(user).subscribe((user) => {
+        spectator.service.addUser(user).subscribe((newUser) => {
             expect(spyGet).toHaveBeenCalledWith(
-                environment.baseURL + '/user', user
+                environment.baseURL + '/user', newUser
             );
-            expect(user.firstName).toEqual('Victor');
+            expect(newUser.firstName).toEqual('Victor');
             done();
         });
     });
 
     it('should user update', (done) => {
-        const user = {
-            id: 1,
-            firstName: 'Victor',
-            lastName: 'Barbosa',
-            email: 'victor@gmail.com',
-            educationaId: 1,
-            educationalHistory: '1',
-            dob: '1991-01-01',
-        } as User;
         const spyGet = jest.spyOn(httpClient, 'put').mockImplementation(() => of(user));
-        spectator.service.update(user).subscribe((user) => {
-            expect(spyGet).toHaveBeenCalledWith(environment.baseURL + '/user', user);
-            expect(user.firstName).toEqual('Victor');
+        spectator.service.update(user).subscribe((newUser) => {
+            expect(spyGet).toHaveBeenCalledWith(environment.baseURL + '/user', newUser);
+            expect(newUser.firstName).toEqual('Victor');
             done();
         });
     });
 
     it('should user delete', (done) => {
-        const user = {
-            id: 1,
-            firstName: 'Victor',
-            lastName: 'Barbosa',
-            email: 'victor@gmail.com',
-            educationaId: 1,
-            educationalHistory: '1',
-            dob: '1991-01-01',
-        } as User;
         const spyGet = jest.spyOn(httpClient, 'delete').mockImplementation(() => of(user));
-        spectator.service.delete(user).subscribe((user) => {
-            expect(spyGet).toHaveBeenCalledWith(environment.baseURL + '/user/' + user.id);
+        spectator.service.delete(user).subscribe((newUser) => {
+            expect(spyGet).toHaveBeenCalledWith(environment.baseURL + '/user/' + newUser.id);
             done();
         });
     });

@@ -9,7 +9,7 @@ describe('UserEffects', () => {
   let effects: UserEffects;
   let userService: UserService;
   let actions: Observable<any>;
- 
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -21,11 +21,10 @@ describe('UserEffects', () => {
         provideMockActions(() => actions)
       ],
     });
- 
     effects = TestBed.get(UserEffects);
     userService = TestBed.get(UserService);
   });
- 
+
   it('should work', () => {
     expect(effects).toBeTruthy();
   });

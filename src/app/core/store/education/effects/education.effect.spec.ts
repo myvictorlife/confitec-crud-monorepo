@@ -9,7 +9,6 @@ describe('EducationEffects', () => {
   let effects: EducationEffects;
   let educationService: EducationService;
   let actions: Observable<any>;
- 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -21,13 +20,11 @@ describe('EducationEffects', () => {
         provideMockActions(() => actions)
       ],
     });
- 
     effects = TestBed.get(EducationEffects);
     educationService = TestBed.get(EducationService);
   });
- 
+
   it('should work', () => {
     expect(effects).toBeTruthy();
   });
-
 });
