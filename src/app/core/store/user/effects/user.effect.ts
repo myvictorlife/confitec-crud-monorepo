@@ -24,9 +24,9 @@ export class UserEffects {
     addUser$ = createEffect(() => this.actions$
         .pipe(
             ofType(fromUserActions.ActionTypes.INSERT_USER),
-            switchMap((userId) => this.userService.addUser(userId)
+            switchMap(({user}) => this.userService.addUser(user)
                 .pipe(
-                    map((user: User) => fromUserActions.InsertUsersSuccessfullyAction({user})),
+                    map((newUser: User) => fromUserActions.InsertUsersSuccessfullyAction({user: newUser})),
                     catchError((error) => of(fromUserActions.InsertUsersFailedAction(error)))
                 )
             )));
@@ -35,7 +35,7 @@ export class UserEffects {
     update$ = createEffect(() => this.actions$
         .pipe(
             ofType(fromUserActions.ActionTypes.UPDATE_USER),
-            switchMap(({ payload }) => this.userService.update(payload)
+            switchMap(({ user }) => this.userService.update(user)
                 .pipe(
                     map((newUser) => fromUserActions.UpdateUserSuccessfullyAction({user: newUser})),
                     catchError((error) => of(fromUserActions.UpdateUserFailedAction(error)))

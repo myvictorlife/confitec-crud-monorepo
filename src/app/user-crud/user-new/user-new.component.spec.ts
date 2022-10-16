@@ -7,7 +7,6 @@ import { UserFormComponent } from '../user-form/user-form.component';
 import { UserNewComponent } from './user-new.component';
 
 describe('UserNewComponent', () => {
-  
   let spectator: Spectator<UserNewComponent>;
   const createComponent = createComponentFactory({
     component: UserNewComponent,

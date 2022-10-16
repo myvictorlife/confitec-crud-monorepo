@@ -52,7 +52,7 @@ export class UserFormComponent implements OnInit {
   };
 
   submitForm() {
-    this.userFormChange.emit(this.userForm.value);
+    this.userFormChange.emit({ id: this.user?.id, ...this.userForm.value});
   }
 
 }

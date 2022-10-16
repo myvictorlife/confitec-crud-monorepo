@@ -1,12 +1,13 @@
 {
   "name": "confitec",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ionic build --prod",
     "test": "jest",
     "watch": "jest --watch",
     "test:coverage:silent": "npx jest --silent --ci --coverage --coverageReporters='text' --coverageReporters='text-summary'",

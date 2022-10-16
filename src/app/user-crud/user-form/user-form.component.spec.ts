@@ -7,7 +7,6 @@ import { provideMockStore } from '@ngrx/store/testing';
 import { UserFormComponent } from './user-form.component';
 
 describe('UserFormComponent', () => {
-  
   let spectator: Spectator<UserFormComponent>;
   const createComponent = createComponentFactory({
     component: UserFormComponent,

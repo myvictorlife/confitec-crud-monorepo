@@ -5,6 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user/user.service';
 import { EducationService } from './services/education/education.service';
+import { UploadingService } from './services/upload-file/uploading.service';
 
 
 @NgModule({
@@ -14,7 +15,7 @@ import { EducationService } from './services/education/education.service';
     HttpClientModule
   ],
   providers: [
-    UserService, EducationService
+    UserService, EducationService, UploadingService
   ]
 })
 export class CoreModule {}
