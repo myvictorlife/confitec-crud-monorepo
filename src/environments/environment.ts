@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  baseURL: 'http://localhost:5001/my-custom-life-property/us-central1/api'
-  //baseURL: 'https://us-central1-my-custom-life-property.cloudfunctions.net'
+  //baseURL: 'http://localhost:5001/my-custom-life-property/us-central1/api'
+  baseURL: 'https://us-central1-my-custom-life-property.cloudfunctions.net'
 };
 
 /*
