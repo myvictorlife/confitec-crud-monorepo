@@ -20,6 +20,7 @@
       "@confitec-store/*": ["app/core/store/*"],
       "@confitec-services/*": ["app/core/services/*"],
       "@confitec-models/*": ["app/core/models/*"],
+      "@confitec-components/*": ["app/components/*"],
       "@environment": ["environments/environment"],
       "@environment/*": ["environments/*"],
     }

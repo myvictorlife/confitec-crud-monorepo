@@ -12,7 +12,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserNewComponent } from './user-new/user-new.component';
-import { ComponentsModule } from 'app/components/components.module';
+import { ConfitecComponentsModule } from '@confitec-components/components.module';
 
 @NgModule({
   imports: [
@@ -21,7 +21,7 @@ import { ComponentsModule } from 'app/components/components.module';
     ReactiveFormsModule,
     IonicModule,
     UserCrudPageRoutingModule,
-    ComponentsModule
+    ConfitecComponentsModule
   ],
   declarations: [
     UserCrudPage,

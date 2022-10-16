@@ -5,7 +5,8 @@ module.exports = {
     globalSetup: 'jest-preset-angular/global-setup',
     testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/dist/'],
     transform: {
-      '^.+\\.(ts|js|html)$': 'jest-preset-angular'
+      '^.+\\.(ts|js|html)$': 'jest-preset-angular',
+      "^.+\\.[t|j]sx?$": "babel-jest"
     },
     globals: {
       'ts-jest': {
@@ -35,8 +36,11 @@ module.exports = {
       '^@confitec-store/(.*)$': '<rootDir>/src/app/core/store/$1',
       '^@confitec-services/(.*)$': '<rootDir>/src/app/core/services/$1',
       '^@confitec-models/(.*)$': '<rootDir>/src/app/core/models/$1',
+      '^@confitec-components/(.*)$': '<rootDir>/src/app/components/$1',
       '^@environment/(.*)$': '<rootDir>/src/environments/$1',
       '^@environment$': '<rootDir>/src/environments/environment'
     },
-    transformIgnorePatterns: [ '/node_modules/(?!module1|module2/).+\\.js$' ]
+    transformIgnorePatterns: [
+      '/node_modules/(?!@angular|@firebase|firebase|!module1|module2/).+\\.js$',
+    ]
   };
