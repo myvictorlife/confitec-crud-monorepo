@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '@confitec-core/models/user.model';
-import { selectAllUsers } from '@confitec-core/store/user/selectors/user.selector';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'confitec-user-crud',
@@ -11,9 +8,13 @@ import { Observable } from 'rxjs';
 })
 export class UserCrudPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  redirectToRegisterUser() {
+    this.router.navigate(['user-crud/new']);
   }
 
 }

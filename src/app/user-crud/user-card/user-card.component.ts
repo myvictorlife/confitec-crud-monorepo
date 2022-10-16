@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '@confitec-core/models/user.model';
 import * as fromUser from '@confitec-store/user/actions/user.actions';
 import { Store } from '@ngrx/store';
@@ -12,19 +13,17 @@ export class UserCardComponent implements OnInit {
 
   @Input() user: User;
 
-  isEdit = false;
-
-  constructor(private store: Store) { }
+  constructor(private store: Store, private router: Router) { }
 
   ngOnInit() {}
 
-  setIsEdit() {
-    this.isEdit = !this.isEdit;
-    if (this.isEdit) {
-      this.store.dispatch(fromUser.setSelectedUserId({ selectedUserId: this.user.id}));
-    } else {
+  redirectToEditPage() {
+    this.store.dispatch(fromUser.setSelectedUserId({ selectedUserId: this.user.id}));
+    this.router.navigate(['user-crud/edit']);
+  }
 
-    }
+  removeUser(user: User) {
+    this.store.dispatch(fromUser.DeleteUserAction({ user }));
   }
 
 }

@@ -1,20 +1,23 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { createComponentFactory, Spectator } from '@ngneat/spectator';
 import { provideMockStore } from '@ngrx/store/testing';
+import { UserFormComponent } from '../user-form/user-form.component';
 
-import { UserListComponent } from './user-list.component';
+import { UserNewComponent } from './user-new.component';
 
-describe('UserListComponent', () => {
-
-  let spectator: Spectator<UserListComponent>;
+describe('UserNewComponent', () => {
+  
+  let spectator: Spectator<UserNewComponent>;
   const createComponent = createComponentFactory({
-    component: UserListComponent,
+    component: UserNewComponent,
     imports: [
       IonicModule.forRoot(),
+      ReactiveFormsModule
     ],
     declarations: [
-      UserListComponent
+      UserNewComponent,
+      UserFormComponent
     ],
     providers: [
       provideMockStore({})
@@ -24,7 +27,6 @@ describe('UserListComponent', () => {
   beforeEach(() => spectator = createComponent());
 
   it('should create', () => {
-    expect(spectator).toBeTruthy();
+    expect(spectator.component).toBeTruthy();
   });
-
 });

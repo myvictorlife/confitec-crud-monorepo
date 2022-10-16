@@ -1,9 +1,10 @@
-import { Action, createAction, props } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { User } from '@confitec-core/models/user.model';
-import { Predicate } from '@angular/core';
 
 export enum ActionTypes {
-    /*eslint camelcase: ["error", {ignoreImports: true}]*/
+    INSERT_USER = '[User Service] Insert User',
+    INSERT_USER_SUCCESSFULLY = '[User Service] Insert User Successfully',
+    INSERT_USER_FAILED = '[User Service] Insert User Failed',
     ADD_USER = '[User Service] Create User',
     ADD_USERS = '[User Service] Create Users',
     UPDATE_USER = '[User Service] Update User',
@@ -19,6 +20,22 @@ export enum ActionTypes {
     USER_SELECTED = '[User] Set Selected User Id'
 }
 
+export const InsertUsersAction = createAction(
+    ActionTypes.INSERT_USER,
+    props<{ user: User }>()
+);
+
+export const InsertUsersSuccessfullyAction = createAction(
+    ActionTypes.INSERT_USER_SUCCESSFULLY,
+    props<{ user: User }>()
+);
+
+export const InsertUsersFailedAction = createAction(
+    ActionTypes.INSERT_USER_FAILED,
+    props<{ error: any }>()
+);
+
+
 export const AddUsersAction = createAction(
     ActionTypes.ADD_USERS,
     props<{ users: User[] }>()
@@ -26,7 +43,7 @@ export const AddUsersAction = createAction(
 
 
 export const AddUserAction = createAction(
-    ActionTypes.UPDATE_USER,
+    ActionTypes.ADD_USER,
     props<{ user: User }>()
 );
 
@@ -60,12 +77,12 @@ export const FetchUserByIdAction = createAction(
 );
 
 export const DeleteUserAction = createAction(
-    ActionTypes.UPDATE_USER_FAILED,
+    ActionTypes.DELETE_USER,
     props<{ user: User }>()
 );
 
 export const DeleteUserSuccessfullyAction = createAction(
-    ActionTypes.UPDATE_USER_FAILED,
+    ActionTypes.DELETE_USER_SUCCESSFULLY,
     props<{ user: User }>()
 );
 

@@ -1,12 +1,10 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { createComponentFactory, Spectator } from '@ngneat/spectator';
-import { RouterTestingModule } from "@angular/router/testing";
+import { RouterTestingModule } from '@angular/router/testing';
 import { HomePage } from './home.page';
 
 describe('HomePage', () => {
-  
   let spectator: Spectator<HomePage>;
   const createComponent = createComponentFactory({
     component: HomePage,

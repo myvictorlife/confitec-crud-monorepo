@@ -11,11 +11,11 @@ export class UserService {
     constructor(private httpClient: HttpClient) {}
 
     fetchAll(): Observable<User[]> {
-        return this.httpClient.get<User[]>('https://run.mocky.io/v3/441925dd-29fb-4a58-8f5c-bc3d907856ac');
+        return this.httpClient.get<User[]>('https://run.mocky.io/v3/4487097c-75a6-4eaa-bbbc-d36fed452614');
     }
 
-    fetchById(id: number): Observable<User> {
-        return this.httpClient.get<User>('https://run.mocky.io/v3/50e3b08f-9c6f-4be3-9de3-4938c42a9354');
+    addUser(user: User): Observable<User> {
+        return this.httpClient.post<User>('https://run.mocky.io/v3/494a2650-db60-4c75-89ab-778ff9b02035', user);
     }
 
     update(user: User): Observable<User> {
@@ -23,7 +23,7 @@ export class UserService {
     }
 
     delete(user: User): Observable<User> {
-        return this.httpClient.delete<User>('https://run.mocky.io/v3/50e3b08f-9c6f-4be3-9de3-4938c42a9354');
+        return this.httpClient.delete<User>('https://run.mocky.io/v3/6e912d03-7882-446a-a0c1-6117d8faca1d');
     }
 
 }

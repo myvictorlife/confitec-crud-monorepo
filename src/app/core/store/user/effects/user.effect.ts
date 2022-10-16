@@ -21,13 +21,13 @@ export class UserEffects {
                 )
             )));
 
-    fetchById$ = createEffect(() => this.actions$
+    addUser$ = createEffect(() => this.actions$
         .pipe(
-            ofType(fromUserActions.ActionTypes.FETCH_USER_BY_ID),
-            switchMap((userId) => this.userService.fetchById(userId)
+            ofType(fromUserActions.ActionTypes.INSERT_USER),
+            switchMap((userId) => this.userService.addUser(userId)
                 .pipe(
-                    map((user: User) => fromUserActions.AddUserAction({user})),
-                    catchError((error) => of(fromUserActions.FetchAllUsersFailedAction(error)))
+                    map((user: User) => fromUserActions.InsertUsersSuccessfullyAction({user})),
+                    catchError((error) => of(fromUserActions.InsertUsersFailedAction(error)))
                 )
             )));
 

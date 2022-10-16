@@ -29,8 +29,10 @@ export const initialState: UserState = adapter.getInitialState({
 export const reducer = createReducer(
     initialState,
     on(fromUser.AddUserAction, (state, { user }) => adapter.addOne(user, state)),
+    on(fromUser.InsertUsersSuccessfullyAction, (state, { user }) => adapter.addOne(user, state)),
     on(fromUser.AddUsersAction, (state, { users }) => adapter.addMany(users, state)),
-    on(fromUser.UpdateUserSuccessfullyAction, (state, { user }) => adapter.updateOne({ id: user.id, changes: { ...user }}, state)),
+    on(fromUser.UpdateUserSuccessfullyAction, (state, { user }) =>
+        adapter.updateOne({ id: user.id, changes: { ...user }}, { ...state, selectedUserId: null})),
     on(fromUser.setSelectedUserId, (state, { selectedUserId }) => ({
         ...state,
         selectedUserId,
