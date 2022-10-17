@@ -63,7 +63,7 @@ export class UserFormComponent implements OnInit {
   }
 
   downloadViewImage(url){
-    window.open(encodeURI(url),'_system","location=yes');
+    window.open(encodeURI(url),'_system', 'location=yes');
   }
 
   submitForm() {

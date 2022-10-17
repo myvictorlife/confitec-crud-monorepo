@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { UploadFile } from '@confitec-core/models/upload-file.model';
 import { UploadingService } from '@confitec-core/services/upload-file/uploading.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { UploadingService } from '@confitec-core/services/upload-file/uploading.
 })
 export class FileUploadComponent implements OnInit {
 
-  @Output() urlChange = new EventEmitter<string>();
+  @Output() urlChange = new EventEmitter<UploadFile>();
   @Output() barStatusChange = new EventEmitter<boolean>();
 
   constructor(private uploadService: UploadingService) { }
