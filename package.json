@@ -7,7 +7,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:prod": "ng build --prod",
+    "build:prod": "ng build --configuration production --aot",
     "build:pull-request": "npm run build --pull-request",
     "test": "jest",
     "watch": "jest --watch",
