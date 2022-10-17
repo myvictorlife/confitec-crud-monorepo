@@ -7,5 +7,6 @@ export interface User {
     email: string;
     dob: string;
     educationaId: number;
+    educationName?: string;
     historyEducation: UploadFile;
 }

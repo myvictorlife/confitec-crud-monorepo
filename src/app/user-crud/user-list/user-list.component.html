@@ -1,2 +1,5 @@
 
-<confitec-user-card *ngFor="let user of (selectAllUsers$ | async)" [user]="user"></confitec-user-card>
+<confitec-user-card
+*ngFor="let user of (selectAllUsers$ | async)"
+[user]="user"
+[educationsList]="educationsList"></confitec-user-card>
