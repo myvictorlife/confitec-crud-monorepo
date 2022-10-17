@@ -34,8 +34,8 @@ export class UserFormComponent implements OnInit {
       lastName: [user.lastName],
       dob: [dob],
       email: [user.email, [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      educationId: [user.educationaId, [Validators.required]],
-      historyEducation: [user.historyEducation, [Validators.required]]
+      educationId: [user.educationId, [Validators.required]],
+      historyEducation: [user.historyEducation]
     });
   }
 

@@ -19,7 +19,7 @@ describe('UserService', () => {
         firstName: 'Victor',
         lastName: 'Barbosa',
         email: 'victor@gmail.com',
-        educationaId: 1,
+        educationId: 1,
         historyEducation: { fileName: 'Confitec.pdf', url: 'https://location/confitec.pdf'} as UploadFile,
         dob: '1991-01-01'
     } as User;
@@ -45,7 +45,7 @@ describe('UserService', () => {
                 lastName: 'Barbosa',
                 email: 'victor@gmail.com',
                 dob: '1991-09-01',
-                educationaId: 1,
+                educationId: 1,
                 educationalHistory: 1
             },
             {
@@ -54,7 +54,7 @@ describe('UserService', () => {
                 lastName: 'Silva',
                 email: 'carlos@gmail.com',
                 dob: '1993-01-03',
-                educationaId: 2,
+                educationId: 2,
                 educationalHistory: 2
             }
         ]));
