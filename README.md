@@ -28,7 +28,6 @@ baseURL: ''
     $ @ngrx/effects // Side effect model for Store
     $ @ngrx/entity // Entity State adapter for managing record collections.
     $ @ngx-translate // Text Translations (NOT INCLUDED!!!)
-    $ @angular/material // Material Design components for Angular
     $ rxjs // RxJS is a library for reactive programming using Observables
     $ jest // Unit Tests
     $ Spectator // Spectator helps you get rid of all the boilerplate grunt work, leaving you with readable, sleek and streamlined unit tests.
