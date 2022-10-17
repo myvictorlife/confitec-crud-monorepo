@@ -6,9 +6,10 @@
 
   <ion-card-content>
     <ion-item>
-      Data de Anivesário: {{ user.dob }}
+      Data de Anivesário: {{ user.dob | date: 'dd/MM/yyyy' }}
       <ion-icon name="trash-outline" item-end slot="end" (click)="removeUser(user)"></ion-icon>
     </ion-item>
+    <hr/>
     <ion-item>
       <div>
         Escolaridade: <span>{{ getEducationName(user.educationId) }}</span>
