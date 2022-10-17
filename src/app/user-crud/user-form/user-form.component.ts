@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { selectAllEducations } from '@confitec-core/store/education/selectors/education.selector';
 import { Store } from '@ngrx/store';
-import * as fromEducationActions from '@confitec-store/education/actions/education.actions';
 import { User } from '@confitec-core/models/user.model';
 import { UploadFile } from '@confitec-core/models/upload-file.model';
 
@@ -22,9 +21,7 @@ export class UserFormComponent implements OnInit {
 
   maxDate: string;
 
-  constructor(private store: Store, public formBuilder: FormBuilder) {
-    this.loadEducations();
-  }
+  constructor(private store: Store, public formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.initForm(this.user ?? {} as User);
@@ -40,10 +37,6 @@ export class UserFormComponent implements OnInit {
       educationId: [user.educationaId, [Validators.required]],
       historyEducation: [user.historyEducation, [Validators.required]]
     });
-  }
-
-  loadEducations() {
-    this.store.dispatch(fromEducationActions.GetAllEducationAction());
   }
 
   getTodayDate() {
@@ -70,6 +63,7 @@ export class UserFormComponent implements OnInit {
     if (!this.userForm.invalid) {
       this.userFormChange.emit({ id: this.user?.id, ...this.userForm.value});
     } else {
+      this.userForm.markAsDirty();
       this.userForm.markAllAsTouched();
     }
   }

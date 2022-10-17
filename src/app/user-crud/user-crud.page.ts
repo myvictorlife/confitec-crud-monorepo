@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import * as fromEducationActions from '@confitec-store/education/actions/education.actions';
+import { selectAllEducations } from '@confitec-core/store/education/selectors/education.selector';
 
 @Component({
   selector: 'confitec-user-crud',
@@ -8,9 +11,17 @@ import { Router } from '@angular/router';
 })
 export class UserCrudPage implements OnInit {
 
-  constructor(private router: Router) { }
+  educationsList$ = this.store.select(selectAllEducations);
+
+  constructor(private router: Router, private store: Store) {
+    this.loadEducations();
+  }
 
   ngOnInit() {
+  }
+
+  loadEducations() {
+    this.store.dispatch(fromEducationActions.GetAllEducationAction());
   }
 
   redirectToRegisterUser() {

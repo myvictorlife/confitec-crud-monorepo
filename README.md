@@ -27,7 +27,7 @@ baseURL: ''
     $ @ngrx/store // State Management
     $ @ngrx/effects // Side effect model for Store
     $ @ngrx/entity // Entity State adapter for managing record collections.
-    $ @ngx-translate // Text Translations
+    $ @ngx-translate // Text Translations (NOT INCLUDED!!!)
     $ @angular/material // Material Design components for Angular
     $ rxjs // RxJS is a library for reactive programming using Observables
     $ jest // Unit Tests
