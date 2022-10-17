@@ -7,7 +7,6 @@
   <ion-card-content>
     <ion-item>
       Data de Anivesário: {{ user.dob | date: 'dd/MM/yyyy' }}
-      <ion-icon name="trash-outline" item-end slot="end" (click)="removeUser(user)"></ion-icon>
     </ion-item>
     <hr/>
     <ion-item>
@@ -24,5 +23,8 @@
         </ion-thumbnail>
       </div>
     </div>
+    <ion-item>
+      <ion-icon name="trash-outline" item-end slot="end" (click)="removeUser(user)"></ion-icon>
+    </ion-item>
   </ion-card-content>
 </ion-card>
