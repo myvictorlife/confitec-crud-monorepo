@@ -11,7 +11,7 @@
     </ion-item>
     <ion-item>
       <div>
-        Escolaridade: <span> {{ educationName }} </span>
+        Escolaridade: <span>{{ getEducationName(user.educationId) }}</span>
       </div><br />
     </ion-item>
     <div *ngIf="!!user?.historyEducation">

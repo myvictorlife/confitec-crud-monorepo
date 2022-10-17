@@ -11,5 +11,6 @@
 </ion-header>
 
 <ion-content>
-  <confitec-user-list *ngIf="(educationsList$ | async)?.length > 0" [educationsList]="educationsList$ | async"></confitec-user-list>
+  <confitec-user-list *ngIf="(selectAllUsers$ | async)&& (educationsList$ | async)?.length > 0"
+      [educationsList]="educationsList$ | async" [userList]="selectAllUsers$ | async"></confitec-user-list>
 </ion-content>
