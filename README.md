@@ -17,9 +17,10 @@ baseURL: ''
 
 ## Paths
 
-    $ @confitec-xp-store // Store
-    $ @confitec-xp-services // Services
-    $ @confitec-xp-core // Core
+    $ @confitec-store // Store
+    $ @confitec-services // Services
+    $ @confitec-core // Core
+    $ @confitec-components // Components
     $ @environment // Configuration (project, languages, hosts, ...)
 
 ## Tools
